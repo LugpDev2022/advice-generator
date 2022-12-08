@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Container, Modal, Row } from "react-bootstrap";
 import desktopDivider from "./assets/images/pattern-divider-desktop.svg";
 import mobileDivider from "./assets/images/pattern-divider-mobile.svg";
+import iconDice from "./assets/images/icon-dice.svg";
 
 function App() {
   const advice =
@@ -32,11 +33,19 @@ function App() {
           </Row>
 
           <Row>
-            <Col className="justify-content-center d-flex">
+            <Col className="justify-content-center d-flex mt-2 mb-5 overflow-hidden">
               <picture>
                 <source srcset={mobileDivider} media="(max-width: 380px)" />
-                <img src={desktopDivider} alt="no" />
+                <img src={desktopDivider} />
               </picture>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
+              <button className="custom-btn rounded-circle">
+                <img src={iconDice} />
+              </button>
             </Col>
           </Row>
         </Container>
