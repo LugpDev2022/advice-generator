@@ -88,6 +88,7 @@ function App() {
               <button
                 className="custom-btn rounded-circle"
                 onClick={handleClick}
+                disabled={true}
               >
                 <img src={iconDice} />
               </button>
