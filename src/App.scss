@@ -5,11 +5,23 @@
 
 * {
   font-family: "Manrope";
-  font-weight: 800;
+  font-weight: 800 !important;
 }
 
 body {
   background: #1f2632 !important;
+}
+
+.my-modal {
+  div > div {
+    background: #323a49;
+    border-radius: 7px;
+  }
+}
+
+.title {
+  font-size: 15px;
+  letter-spacing: 2px;
 }
 
 $theme-colors: (

@@ -1,13 +1,23 @@
 import React from "react";
-import { Container, Row } from "react-bootstrap";
+import { Container, Modal, Row } from "react-bootstrap";
 
 function App() {
   return (
-    <Container>
-      <Row>
-        <h1 className="text-center text-info mt-3">Advice App</h1>
-      </Row>
-    </Container>
+    <Modal
+      show
+      animation={false}
+      backdrop={false}
+      centered
+      className="my-modal"
+    >
+      <Modal.Body>
+        <Container>
+          <Row>
+            <h1 className="title text-info text-center my-3">ADVICE #117</h1>
+          </Row>
+        </Container>
+      </Modal.Body>
+    </Modal>
   );
 }
 
