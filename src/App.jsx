@@ -1,13 +1,43 @@
-import React from "react";
-import { Col, Container, Modal, Row } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Col, Container, Modal, Row, Spinner } from "react-bootstrap";
 import desktopDivider from "./assets/images/pattern-divider-desktop.svg";
 import mobileDivider from "./assets/images/pattern-divider-mobile.svg";
 import iconDice from "./assets/images/icon-dice.svg";
 
 function App() {
-  const advice =
-    "Avoid mixing Ginger Nuts with other biscuits, they contaminate. Keep separated.";
-  const id = 117;
+  const [{ loading, advice }, setState] = useState({
+    loading: true,
+    advice: {},
+  });
+
+  useEffect(() => {
+    fetch("https://api.adviceslip.com/advice")
+      .then((resp) => {
+        return resp.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setState({
+          loading: false,
+          advice: data,
+        });
+      });
+  }, []);
+
+  const handleClick = () => {};
+
+  if (loading) {
+    return (
+      <Spinner
+        animation="border"
+        variant="primary"
+        role="status"
+        className="position-absolute top-50 start-50 "
+      >
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
+  }
 
   return (
     <Modal
@@ -22,20 +52,22 @@ function App() {
           <Row>
             <Col>
               <h1 className="custom-title text-info text-center my-3">
-                ADVICE #{id}
+                ADVICE #{advice.slip.id}
               </h1>
             </Col>
           </Row>
           <Row>
             <Col>
-              <p className="custom-p text-center text-primary">"{advice}"</p>
+              <p className="custom-p text-center text-primary">
+                {advice.slip.advice}
+              </p>
             </Col>
           </Row>
 
           <Row>
             <Col className="justify-content-center d-flex mt-2 mb-5 overflow-hidden">
               <picture>
-                <source srcset={mobileDivider} media="(max-width: 380px)" />
+                <source srcSet={mobileDivider} media="(max-width: 380px)" />
                 <img src={desktopDivider} />
               </picture>
             </Col>
@@ -43,7 +75,10 @@ function App() {
 
           <Row>
             <Col>
-              <button className="custom-btn rounded-circle">
+              <button
+                className="custom-btn rounded-circle"
+                onClick={handleClick}
+              >
                 <img src={iconDice} />
               </button>
             </Col>
