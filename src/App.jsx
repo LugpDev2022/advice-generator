@@ -1,8 +1,15 @@
 import React from "react";
-import { Col, Container, Modal, Row, Spinner } from "react-bootstrap";
+
+import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
+import Modal from "react-bootstrap/Modal";
+import Row from "react-bootstrap/Row";
+import Spinner from "react-bootstrap/Spinner";
+
 import desktopDivider from "./assets/images/pattern-divider-desktop.svg";
 import mobileDivider from "./assets/images/pattern-divider-mobile.svg";
 import iconDice from "./assets/images/icon-dice.svg";
+
 import { useAdvice } from "./hooks/useAdvice";
 
 function App() {
