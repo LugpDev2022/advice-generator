@@ -1,10 +1,11 @@
 import React from "react";
 import { Col, Container, Modal, Row } from "react-bootstrap";
+import desktopDivider from "./assets/images/pattern-divider-desktop.svg";
+import mobileDivider from "./assets/images/pattern-divider-mobile.svg";
 
 function App() {
   const advice =
-    "When you're at a concert or event, enjoy the moment, enjoy being there. Try leaving your camera in your pocket.";
-
+    "Avoid mixing Ginger Nuts with other biscuits, they contaminate. Keep separated.";
   const id = 117;
 
   return (
@@ -27,6 +28,15 @@ function App() {
           <Row>
             <Col>
               <p className="custom-p text-center text-primary">"{advice}"</p>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col className="justify-content-center d-flex">
+              <picture>
+                <source srcset={mobileDivider} media="(max-width: 380px)" />
+                <img src={desktopDivider} alt="no" />
+              </picture>
             </Col>
           </Row>
         </Container>
