@@ -10,21 +10,31 @@ function App() {
     advice: {},
   });
 
-  useEffect(() => {
+  const getAdvice = () => {
     fetch("https://api.adviceslip.com/advice")
       .then((resp) => {
         return resp.json();
       })
       .then((data) => {
-        console.log(data);
         setState({
           loading: false,
           advice: data,
         });
       });
+  };
+
+  useEffect(() => {
+    getAdvice();
   }, []);
 
-  const handleClick = () => {};
+  const handleClick = () => {
+    setState({
+      loading: true,
+      advice,
+    });
+
+    getAdvice();
+  };
 
   if (loading) {
     return (
