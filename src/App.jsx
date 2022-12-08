@@ -5,7 +5,7 @@ function App() {
   return (
     <Container>
       <Row>
-        <h1 className="text-center mt-3">Advice App</h1>
+        <h1 className="text-center text-info mt-3">Advice App</h1>
       </Row>
     </Container>
   );
