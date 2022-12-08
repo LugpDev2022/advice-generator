@@ -1,40 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Col, Container, Modal, Row, Spinner } from "react-bootstrap";
 import desktopDivider from "./assets/images/pattern-divider-desktop.svg";
 import mobileDivider from "./assets/images/pattern-divider-mobile.svg";
 import iconDice from "./assets/images/icon-dice.svg";
+import { useAdvice } from "./hooks/useAdvice";
 
 function App() {
-  const [{ loading, advice }, setState] = useState({
-    loading: true,
-    advice: {},
-  });
-
-  const getAdvice = () => {
-    fetch("https://api.adviceslip.com/advice")
-      .then((resp) => {
-        return resp.json();
-      })
-      .then((data) => {
-        setState({
-          loading: false,
-          advice: data,
-        });
-      });
-  };
-
-  useEffect(() => {
-    getAdvice();
-  }, []);
-
-  const handleClick = () => {
-    setState({
-      loading: true,
-      advice,
-    });
-
-    getAdvice();
-  };
+  const { loading, advice, handleClick } = useAdvice();
 
   if (loading) {
     return (
