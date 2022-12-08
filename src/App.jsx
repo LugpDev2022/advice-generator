@@ -6,7 +6,7 @@ import iconDice from "./assets/images/icon-dice.svg";
 import { useAdvice } from "./hooks/useAdvice";
 
 function App() {
-  const { loading, advice, handleClick } = useAdvice();
+  const { loading, advice, handleClick, canSearch } = useAdvice();
 
   if (loading) {
     return (
@@ -60,7 +60,7 @@ function App() {
               <button
                 className="custom-btn rounded-circle"
                 onClick={handleClick}
-                disabled={true}
+                disabled={!canSearch}
               >
                 <img src={iconDice} />
               </button>

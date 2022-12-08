@@ -1,26 +1,15 @@
 import { useEffect, useState } from "react";
+import { getAdvice } from "../helpers/getAdvice";
 
 export const useAdvice = () => {
   const [state, setState] = useState({
     loading: true,
+    canSearch: true,
     advice: {},
   });
 
-  const getAdvice = () => {
-    fetch("https://api.adviceslip.com/advice")
-      .then((resp) => {
-        return resp.json();
-      })
-      .then((data) => {
-        setState({
-          loading: false,
-          advice: data,
-        });
-      });
-  };
-
   useEffect(() => {
-    getAdvice();
+    getAdvice(setState);
   }, []);
 
   const handleClick = () => {
@@ -29,7 +18,7 @@ export const useAdvice = () => {
       loading: true,
     });
 
-    getAdvice();
+    getAdvice(setState);
   };
 
   return { ...state, handleClick };
