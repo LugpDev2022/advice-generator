@@ -1,15 +1,33 @@
 import { useEffect, useState } from "react";
-import { getAdvice } from "../helpers/getAdvice";
 
 export const useAdvice = () => {
   const [state, setState] = useState({
     loading: true,
-    canSearch: true,
+    canSearch: false,
     advice: {},
   });
 
   useEffect(() => {
-    getAdvice(setState);
+    fetch("https://api.adviceslip.com/advice")
+      .then((resp) => {
+        return resp.json();
+      })
+      .then((data) => {
+        setState({
+          loading: false,
+          canSearch: false,
+          advice: data,
+        });
+
+        setTimeout(() => {
+          setState((prevState) => {
+            return {
+              ...prevState,
+              canSearch: true,
+            };
+          });
+        }, 2500);
+      });
   }, []);
 
   const handleClick = () => {
@@ -18,7 +36,26 @@ export const useAdvice = () => {
       loading: true,
     });
 
-    getAdvice(setState);
+    fetch("https://api.adviceslip.com/advice")
+      .then((resp) => {
+        return resp.json();
+      })
+      .then((data) => {
+        setState({
+          loading: false,
+          canSearch: false,
+          advice: data,
+        });
+
+        setTimeout(() => {
+          setState((prevState) => {
+            return {
+              ...prevState,
+              canSearch: true,
+            };
+          });
+        }, 2500);
+      });
   };
 
   return { ...state, handleClick };
