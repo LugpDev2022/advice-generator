@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export const useAdvice = () => {
   const [state, setState] = useState({
@@ -8,7 +8,7 @@ export const useAdvice = () => {
   });
 
   useEffect(() => {
-    fetch("https://api.adviceslip.com/advice")
+    fetch('https://api.adviceslip.com/advice', { cache: 'no-store' })
       .then((resp) => {
         return resp.json();
       })
@@ -36,7 +36,7 @@ export const useAdvice = () => {
       loading: true,
     });
 
-    fetch("https://api.adviceslip.com/advice")
+    fetch('https://api.adviceslip.com/advice', { cache: 'no-store' })
       .then((resp) => {
         return resp.json();
       })
