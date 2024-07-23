@@ -1,0 +1,16 @@
+// Vitest Snapshot v1
+
+exports[`<App /> > should match snapshot 1`] = `
+<div>
+  <div
+    class="position-absolute top-50 start-50  spinner-border text-primary"
+    role="status"
+  >
+    <span
+      class="visually-hidden"
+    >
+      Loading...
+    </span>
+  </div>
+</div>
+`;
